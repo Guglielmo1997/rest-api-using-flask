@@ -12,7 +12,12 @@ import models
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, origin=["http://localhost:3000/"], supports_credentials=True)
+    remote_origin = os.getenv("REMOTE_ORIGIN")
+    origins = ["http://localhost:3000/"]
+    if remote_origin:
+        origins.append(remote_origin)
+
+    CORS(app, origin=origins, supports_credentials=True)
 
     app.config['PROPAGATE_EXCEPTION'] = True
     app.config['API_TITLE'] = "Shops Rest Api"
