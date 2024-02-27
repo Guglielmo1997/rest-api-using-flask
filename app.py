@@ -64,5 +64,7 @@ def create_app():
     api.register_blueprint(ProductBluePrint)
     api.register_blueprint(UserBluePrint)
 
+    return app
+
 #if __name__ == '__main__':
     #app.run()
